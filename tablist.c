@@ -1,4 +1,3 @@
-
 //question_1
 struct elem_t                                
 {
