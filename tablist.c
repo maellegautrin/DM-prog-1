@@ -29,8 +29,8 @@ typedef struct tlist_t tlist_t;
 //question_4:
 tlist_t* tlist_news()                        
 {
-    tlist_t* t=p;
-    for(int i=0;i<MAX_CAP;++i){
+    tlist_t* t;
+    for(int i=0; i<MAX_CAP;++i){
         t->tab[i].is_free=1;
     }
     t->size=0;
@@ -57,7 +57,7 @@ int tlist_size(tlist_t* l)
 int tlist_add(tlist_t* l,int x, int y)
 {
     if (l->size==MAX_CAP){return 0;}
-    for(int i=0, i<MAX_CAP, i++){
+    for(int i=0; i<MAX_CAP; i++){
         if(l->tab[i].is_free==0)
         {
             l->tab[i].is_free=1;
@@ -66,8 +66,8 @@ int tlist_add(tlist_t* l,int x, int y)
             l->last=i;
             l->size +=1;
             return 1;
-        };
-    };
+        }
+    }
     return 0;
 }
 
