@@ -80,6 +80,7 @@ int tlist_remove(tlist_t* l, int x, int y){
             l->tab[l->tab[i].prev].next=l->tab[i].next;
             l->tab[l->tab[i].next].prev=l->tab[i].prev;
             l->size -=1;
+            return 1;
         }
     }
 }
@@ -103,7 +104,17 @@ int tlist_top(tlist_t* l, int *x, int *y){
 
 //question_11:
 int tlist_push(tlist_t* l, int x, int y){
-    
+    if (l->size==MAX_CAP){return 0;}
+        for(int i=0; i<MAX_CAP; i++){
+            if(l->tab[i].is_free==0)
+        {
+            l->tab[i].is_free=1;
+            l->tab[l->first].prev=i;
+            l->tab[i].next=l->first;
+            l->first=i;
+            l->size +=1;
+            return 1;
+         }
 }
 
 
