@@ -74,14 +74,12 @@ int tlist_add(tlist_t* l,int x, int y)
 
 //question_8:
 int tlist_remove(tlist_t* l, int x, int y){
-    for(int i= l->first;i<=l->last;i++){
-        if(l->tab[i].x==x && l->tab[i].y==y){
-            for(int j=i;j<l->last;i++){
-                l->tab[j]=l->tab[j+1];
-                l->last -=1;
-                l->size -=1;
-                return 1;
-            }
+    for(int i= 0;i<MAX_CAP;i++){
+        if(l->tab[i].x==x && l->tab[i].y==y && l->tab[i].is_free){
+            l->tab[i].is_free=0;
+            l->tab[l->tab[i].prev].next=l->tab[i].next;
+            l->tab[l->tab[i].next].prev=l->tab[i].prev;
+            l->size -=1;
         }
     }
 }
@@ -89,7 +87,8 @@ int tlist_remove(tlist_t* l, int x, int y){
 //question_9:
 int tlist_pop(tlist_t* l){
     if(l->size==0){return 0;};
-    l->first +=1;
+    l->tab[l->first].is_free=0;
+    l->first=l->tab[l->first].next;
     l->size -=1;
     return 1;
 }
@@ -99,6 +98,7 @@ int tlist_top(tlist_t* l, int *x, int *y){
     if(l->size==0){return 0;};
     *x=l->tab[l->first].x;
     *y=l->tab[l->first].y;
+    return 1;
 }
 
 //question_11:
