@@ -131,8 +131,6 @@ int tlist_push(tlist_t* l, int x, int y){
          return 1;
     }
    return 0;
-   
-     
 }
     
 //question_13:
@@ -141,9 +139,14 @@ int dist( int x, int y)
     int d=x*x +y*y;
     return d;
 }
+ 
+int tlist_sort(tlist_t* l)
+{
     
 
-
+}
+    
+    
 int main(void)
 {
     return 0;
