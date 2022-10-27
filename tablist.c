@@ -117,6 +117,31 @@ int tlist_push(tlist_t* l, int x, int y){
          }
 }
 
+//question_12:
+ int tlist_swap(tlist_t* l, int i, inj)
+{
+     if (l->tab[i].is_free && l->tab[j].is_free)
+   {
+         int ex=l->tab[i].x;
+         int ey=l->tab[i].y;
+         l->tab[i].x=l->tab[j].x;
+         l->tab[i].y=l->tab[j].y;
+         l->tab[j].x=ex;
+         l->tab[j].y=ey;
+         return 1;
+    }
+   return 0;
+   
+     
+}
+    
+//question_13:
+int dist( int x, int y)
+{
+    int d=x*x +y*y;
+    return d;
+}
+    
 
 
 int main(void)
