@@ -145,9 +145,9 @@ int tlist_sort(tlist_t* l)
         return d;
     }
     int triRapid(int debut, int fin){
-        int pivot=debut,
-        int i=debut,
-        int j=fin,
+        int pivot=debut;
+        int i=debut;
+        int j=fin;
         while (i<j){
                 while(dist(i) <= dist(pivot) && i<fin){
                     i=l->tab[i].next;}
