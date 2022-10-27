@@ -118,7 +118,7 @@ int tlist_push(tlist_t* l, int x, int y){
 }
 
 //question_12:
- int tlist_swap(tlist_t* l, int i, inj)
+ int tlist_swap(tlist_t* l, int i, int j)
 {
      if (l->tab[i].is_free && l->tab[j].is_free)
    {
@@ -162,6 +162,7 @@ int tlist_sort(tlist_t* l)
         triRapid(j+1, fin);
         }
     triRapid(l->first,l->last);   
+    return 0;
 }
     
 
