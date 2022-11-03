@@ -34,15 +34,14 @@ tlist_t* tlist_news()
   tlist_t* t=malloc(MAX_CAP);
   for (int i = 0; i < MAX_CAP; ++i)
     {
-      t->tab[i].is_free = 100;
+      t->tab[i].is_free = 1;
     }
   t->size = 0;
   return t;
 }
 
 //question_5:
-int
-tlist_free (tlist_t * l)
+int tlist_free (tlist_t * l)
 {
   int s = l->size;
   l->first = 0;
@@ -52,15 +51,13 @@ tlist_free (tlist_t * l)
 }
 
 //question_6:
-int
-tlist_size (tlist_t * l)
+int tlist_size (tlist_t * l)
 {
   return l->size;
 }
 
 //question_7:
-int
-tlist_add (tlist_t * l, int x, int y)
+int tlist_add (tlist_t * l, int x, int y)
 {
   if (l->size == MAX_CAP)
     {
@@ -83,8 +80,7 @@ tlist_add (tlist_t * l, int x, int y)
 
 
 //question_8:
-int
-tlist_remove (tlist_t * l, int x, int y)
+int tlist_remove (tlist_t * l, int x, int y)
 {
   for (int i = 0; i < MAX_CAP; ++i)
     {
@@ -100,8 +96,7 @@ tlist_remove (tlist_t * l, int x, int y)
 }
 
 //question_9:
-int
-tlist_pop (tlist_t * l)
+int tlist_pop (tlist_t * l)
 {
   if (l->size == 0)
     {
@@ -114,8 +109,7 @@ tlist_pop (tlist_t * l)
 }
 
 //question_10:
-int
-tlist_top (tlist_t * l, int *x, int *y)
+int tlist_top (tlist_t * l, int *x, int *y)
 {
   if (l->size == 0)
     {
@@ -127,8 +121,7 @@ tlist_top (tlist_t * l, int *x, int *y)
 }
 
 //question_11:
-int
-tlist_push (tlist_t * l, int x, int y)
+int tlist_push (tlist_t * l, int x, int y)
 {
   if (l->size == MAX_CAP)
     {
@@ -150,8 +143,7 @@ tlist_push (tlist_t * l, int x, int y)
 }
 
 //question_12:
-int
-tlist_swap (tlist_t * l, int i, int j)
+int tlist_swap (tlist_t * l, int i, int j)
 {
   if (l->tab[i].is_free && l->tab[j].is_free)
     {
@@ -168,8 +160,7 @@ tlist_swap (tlist_t * l, int i, int j)
 
 //question_13:
 
-int
-tlist_sort (tlist_t * l)
+int tlist_sort (tlist_t * l)
 {
   int dist (int i)
   {
