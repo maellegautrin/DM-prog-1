@@ -20,7 +20,7 @@ typedef elem_t tabl[100];
 
 struct tlist_t
 {
-  tabl tab;
+  tabl tab[MAX_CAP];
   int size;
   int first;
   int last;
@@ -31,7 +31,7 @@ typedef struct tlist_t tlist_t;
 //question_4:
 tlist_t* tlist_news()
 {
-  tlist_t* t=malloc(MAX_CAP);
+  tlist_t* t=malloc(sizeof(MAX_CAP));
   for (int i = 0; i < MAX_CAP; ++i)
     {
       t->tab[i].is_free = 1;
