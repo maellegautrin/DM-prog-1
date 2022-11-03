@@ -201,7 +201,7 @@ tlist_sort (tlist_t * l)
 }
 
 
-elem_t a={.x=int 4, .y=5, .is_free=1, .next=1, .prev=8};
+elem_t a={.x= 4, .y=5, .is_free=1, .next=1, .prev=8};
 
 
 int main (void) 
