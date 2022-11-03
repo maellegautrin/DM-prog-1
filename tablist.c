@@ -210,7 +210,7 @@ int main (void)
     tlist_t l = {.tab=tlist_news(), .first=0, .last=4, .size=4};
     for(i = 0; i < 5; ++i)
     {
-      int lx=l->tab[i].x;
+      int lx=l.tab[i].x;
       printf ("%d",lx);
     }
   return 0;
