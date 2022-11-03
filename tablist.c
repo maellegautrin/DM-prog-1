@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+
 //question_1
 struct elem_t
 {
@@ -20,7 +21,7 @@ typedef elem_t tabl[100];
 
 struct tlist_t
 {
-  tabl tab[MAX_CAP];
+  elem_t tab[MAX_CAP];
   int size;
   int first;
   int last;
