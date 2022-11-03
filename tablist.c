@@ -1,5 +1,5 @@
+#include <stdlib.h>
 #include <stdio.h>
-
 //question_1
 struct elem_t
 {
@@ -185,24 +185,20 @@ tlist_sort (tlist_t * l)
     int j = fin;
     while (i < j)
       {
-	while (dist (i) <= dist (pivot) && i < fin)
-	  i = l->tab[i].next;
-	while (dist (j) > dist (pivot))
-	  {
-	    j = l->tab[i].prev;
-	    if (i < j)
-	      {
+    	while (dist (i) <= dist (pivot) && i < fin)
+	      i = l->tab[i].next;
+    	while (dist (j) > dist (pivot))
+	     { j = l->tab[i].prev;}
+	     if (i < j)
 		tlist_swap (l, i, j);
-	      };
-
 	  };
 	tlist_swap (l, pivot, j);
 	triRapid (debut, j - 1);
 	triRapid (j + 1, fin);
-      };
+ };
     triRapid (l->first, l->last);
     return 0;
-  };
+}
 
 
 
@@ -213,7 +209,8 @@ int main (void)
     tlist_t l = {.tab=tlist_news(), .first=0, .last=4, .size=4};
     for(i = 0; i < 5; ++i)
     {
-      printf ("%d\t", l->tab[i].x);
+      int lx=l->tab[i].x;
+      printf ("%d",lx);
     }
   return 0;
 }
