@@ -201,10 +201,8 @@ tlist_sort (tlist_t * l)
 }
 
 
-elem_t a={.x= 4, .y=5, .is_free=1, .next=1, .prev=8};
-elem_t b={.x= 4, .y=5, .is_free=1, .next=2, .prev=0};
-elem_t c={.x= 4, .y=5, .is_free=1, .next=3, .prev=1};
-tlist_t l={.tab={a;b;c}, .first=0, .last=2}
+
+tlist_t l={.tab={elem_t a={.x= 4, .y=5, .is_free=1, .next=1, .prev=8}; elem_t b={.x= 4, .y=5, .is_free=1, .next=2, .prev=0};elem_t c={.x= 4, .y=5, .is_free=1, .next=3, .prev=1}}, .first=0, .last=2};
 
 int main (void) 
 {
