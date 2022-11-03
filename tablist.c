@@ -74,7 +74,7 @@ int tlist_add(tlist_t* l,int x, int y)
 
 //question_8:
 int tlist_remove(tlist_t* l, int x, int y){
-    for(int i= 0;i<MAX_CAP;i++){
+    for(int i= 0;i<MAX_CAP;++i){
         if(l->tab[i].x==x && l->tab[i].y==y && l->tab[i].is_free){
             l->tab[i].is_free=0;
             l->tab[l->tab[i].prev].next=l->tab[i].next;
@@ -167,7 +167,7 @@ int tlist_sort(tlist_t* l)
     
 
     
-int main(void)
+int main()
 {
-    return 0;
+    return 0 ;
 }
