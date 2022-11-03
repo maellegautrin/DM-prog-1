@@ -31,7 +31,7 @@ typedef struct tlist_t tlist_t;
 //question_4:
 tlist_t* tlist_news()
 {
-  tlist_t t=malloc(MAX_CAP);
+  tlist_t* t=malloc(MAX_CAP);
   for (int i = 0; i < MAX_CAP; ++i)
     {
       t->tab[i].is_free = 100;
