@@ -143,31 +143,35 @@ int tlist_sort(tlist_t* l)
         int y=l->tab[i].y;
         int d=x*x +y*y;
         return d;
-    }
+    };
     int triRapid(int debut, int fin){
         int pivot=debut;
         int i=debut;
         int j=fin;
         while (i<j){
-                while(dist(i) <= dist(pivot) && i<fin){
-                    i=l->tab[i].next;}
-                while(dist(j) > dist(pivot))
+              while(dist(i) <= dist(pivot) && i<fin)
+                   i=l->tab[i].next;
+              while(dist(j) > dist(pivot)){
                     j=l->tab[i].prev;
-                if (i<j){ 
+                    if (i<j){
                     tlist_swap(l,i,j);
-                }
-        }
-        tlist_swap(l,pivot,j);
-        triRapid(debut, j-1);
-        triRapid(j+1, fin);
-        }
-    triRapid(l->first,l->last);   
+              };
+
+        };
+       tlist_swap(l,pivot,j);
+       triRapid(debut, j-1);
+       triRapid(j+1, fin);
+    };
+    triRapid(l->first,l->last);
     return 0;
 }
-    
 
-    
-int main()
-{
-    return 0 ;
+elem_t t[]=tlist_new();
+
+
+int main(void)
+        int i;
+        for (i=0 ; i<5 ; i++){
+                printf ("%d\t", t->tab[i].x);}
+    return 0;
 }
