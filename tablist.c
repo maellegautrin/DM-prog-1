@@ -193,15 +193,13 @@ int tlist_sort (tlist_t * l)
 
 
 
-tlist_t l={.tab={elem_t a={.x= 4, .y=5, .is_free=1, .next=1, .prev=8}; elem_t b={.x= 4, .y=5, .is_free=1, .next=2, .prev=0};elem_t c={.x= 4, .y=5, .is_free=1, .next=3, .prev=1}}, .first=0, .last=2};
-
 int main (void) 
 {
     int i;
-    tlist_t l = {.tab=tlist_news(), .first=0, .last=4, .size=4};
+    tlist_t* l = tlist_news ();
     for(i = 0; i < 2; ++i)
     {
-      int lx=l.tab[i].x;
+      int lx=l->tab[i].x;
       printf ("%d",lx);
     }
   return 0;
