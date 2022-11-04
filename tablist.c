@@ -14,7 +14,7 @@ struct elem_t
 typedef struct elem_t elem_t;
 
 //question_2:
-#define MAX_CAP 100;
+#define MAX_CAP 100
 
 // question_3:
 
