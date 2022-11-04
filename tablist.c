@@ -17,7 +17,6 @@ typedef struct elem_t elem_t;
 int MAX_CAP = 100;
 
 // question_3:
-typedef elem_t tabl[100];
 
 struct tlist_t
 {
@@ -30,7 +29,7 @@ struct tlist_t
 typedef struct tlist_t tlist_t;
 
 //question_4:
-tlist_t* tlist_news()
+tlist_t* tlist_new()
 {
   tlist_t* t=malloc(sizeof(tlist_t));
   for (int i = 0; i < MAX_CAP; ++i)
@@ -197,7 +196,7 @@ int tlist_sort (tlist_t * l)
 int main (void) 
 {
     int i;
-    tlist_t* l = tlist_news ();
+    tlist_t* l = tlist_new();
     for(i = 0; i < 2; ++i)
     {
       int lx=l->tab[i].x;
