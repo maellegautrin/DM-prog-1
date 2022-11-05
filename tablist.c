@@ -205,7 +205,7 @@ int main (void)
     tlist_remove(l,4,4);
     for(i = 0; i < 20; ++i)
     {
-      int lx=l->tab[i].x;
+      int lx=l->tab[i].is_free;
       printf ("%d",lx);
     }
   return 0;
