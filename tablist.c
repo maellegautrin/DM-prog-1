@@ -204,7 +204,7 @@ int main (vecteur p[])
     { 
 	tlist_add(l,p[i][0],p[i][1]);
     }
-    for(i=l->first,i<>l->last,i=l->tab[i].next)
+    for(i=l->first,i!=l->last,i=l->tab[i].next)
     {
        int lx=l->tab[i].x;
        int ly=l->tab[i].y;
