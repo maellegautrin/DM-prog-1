@@ -200,6 +200,8 @@ int main (void)
     int i;
     tlist_t* l = tlist_new();
     tlist_add(l,4,4);
+    tlist_add(l,5,1);
+    tlist_add(l,2,0);
     for(i = 0; i < 20; ++i)
     {
       int lx=l->tab[i].x;
