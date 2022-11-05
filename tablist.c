@@ -6,9 +6,9 @@ struct elem_t
 {
   int x;
   int y;
-  _Bool is_free;
-  int next;
-  int prev;
+  _Bool is_free; 	// on choirira comme l'énoncé le précise que is_free est vrai ssi le point est dans la liste
+  int next;   	 	// next indiquera donc le point suivant dans la liste
+  int prev;	 	// et prev le point précédent dans la liste
 };
 
 typedef struct elem_t elem_t;
@@ -29,10 +29,10 @@ struct tlist_t
 typedef struct tlist_t tlist_t;
 
 //question_4:
-tlist_t* tlist_new()
+tlist_t* tlist_new()       // contrairement à ce que l'énoncé demande, initialisera tous les éléments du tableau avec is_free=false ce qui signifie qu'on ne met aucun éléments dans la liste
 {
-  tlist_t* t=malloc(sizeof(tlist_t));
-  for (int i = 0; i < MAX_CAP; ++i)
+  tlist_t* t=malloc(sizeof(tlist_t));  	
+  for (int i = 0; i < MAX_CAP; ++i)    
     {
       t->tab[i].is_free = 0;
     }
@@ -43,8 +43,8 @@ tlist_t* tlist_new()
 //question_5:
 int tlist_free (tlist_t * l)
 {
-  int s = l->size;
-  l->first = 0;
+  int s = l->size;			//on sauvegarde la taille initiale
+  l->first = 0;				//on met tout à 0 ce qui donne aucun éléments dans la liste
   l->last = 0;
   l->size = 0;
   return s;
