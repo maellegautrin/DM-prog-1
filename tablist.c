@@ -198,9 +198,9 @@ int main (void)
     int i;
     tlist_t* l = tlist_new();
     tlist_add(l,4,4);
-    for(i = 0; i < 4; ++i)
+    for(i = 0; i < 20; ++i)
     {
-      int lx=l->tab[i].x;
+      int lx=l->tab[i].is_free;
       printf ("%d",lx);
     }
   return 0;
