@@ -202,6 +202,7 @@ int main (void)
     tlist_add(l,4,4);
     tlist_add(l,5,1);
     tlist_add(l,2,0);
+    tlist_remove(l,4,4);
     for(i = 0; i < 20; ++i)
     {
       int lx=l->tab[i].x;
