@@ -195,18 +195,20 @@ int tlist_sort (tlist_t * l)
 
 
 
-int main (void) 
+int main (p) 
 {
     int i;
     tlist_t* l = tlist_new();
-    tlist_add(l,4,4);
-    tlist_add(l,5,1);
-    tlist_add(l,2,0);
-    tlist_remove(l,4,4);
-    for(i = 0; i < 20; ++i)
+    int s=sizeof(p);
+    for(i=0; i<s;++i)
+    { 
+	tlist_add(l,p[i][0],p[i][1]);
+    }
+    for(i=l->first,i<>l->last,i=l->tab[i].next)
     {
-      int lx=l->tab[i].is_free;
-      printf ("%d",lx);
+       int lx=l->tab[i].x;
+       int ly=l->tab[i].y;
+      printf ("{%d,%d}",lx,ly);
     }
   return 0;
 }
