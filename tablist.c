@@ -67,6 +67,8 @@ int tlist_add (tlist_t * l, int x, int y)
     {
       if (l->tab[i].is_free == 0)
 	{
+	  l->tab[i].x=x;
+	  l->tab[i].y=y;
 	  l->tab[i].is_free = 1;
 	  l->tab[l->last].next = i;
 	  l->tab[i].prev = l->last;
