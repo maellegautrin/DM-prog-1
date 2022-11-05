@@ -204,7 +204,7 @@ int main (vecteur p[])
     { 
 	tlist_add(l,p[i][0],p[i][1]);
     }
-    printf ("{")
+    printf ("{");
     for(i=l->first;i!=l->last;i=l->tab[i].next)
     {
        int lx=l->tab[i].x;
