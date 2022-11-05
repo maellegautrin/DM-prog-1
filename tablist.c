@@ -34,7 +34,7 @@ tlist_t* tlist_new()
   tlist_t* t=malloc(sizeof(tlist_t));
   for (int i = 0; i < MAX_CAP; ++i)
     {
-      t->tab[i].is_free = 1;
+      t->tab[i].is_free = 0;
     }
   t->size = 0;
   return t;
