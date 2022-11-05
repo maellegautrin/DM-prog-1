@@ -193,9 +193,9 @@ int tlist_sort (tlist_t * l)
     return 0;
 }
 
+typedef int vecteur[2];
 
-
-int main (p) 
+int main (vecteur p[]) 
 {
     int i;
     tlist_t* l = tlist_new();
