@@ -197,6 +197,7 @@ int main (void)
 {
     int i;
     tlist_t* l = tlist_new();
+    tlist_add(l,4,4);
     for(i = 0; i < 2; ++i)
     {
       int lx=l->tab[i].x;
