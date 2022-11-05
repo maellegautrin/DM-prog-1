@@ -59,13 +59,13 @@ int tlist_size (tlist_t * l)
 //question_7:
 int tlist_add (tlist_t * l, int x, int y)
 {
-  if (l->size == MAX_CAP)
+  if (l->size == MAX_CAP)  		// si la taille de la liste est déja de MAX_CAP on ne peut plus rien ajouter: on renvoi 0
     {
       return 0;
     }
-  for (int i = 0; i < MAX_CAP; i++)
+  for (int i = 0; i < MAX_CAP; i++) 	//on cherche le premier indice de l' élément qui n'est pas dans la liste (ie is_free est faux)
     {
-      if (l->tab[i].is_free == 0)
+      if (l->tab[i].is_free == 0)	//on ajoute le point (x,y) à cet indice la
 	{
 	  l->tab[i].x=x;
 	  l->tab[i].y=y;
@@ -86,7 +86,7 @@ int tlist_remove (tlist_t * l, int x, int y)
 {
   for (int i = 0; i < MAX_CAP; ++i)
     {
-      if (l->tab[i].x == x && l->tab[i].y == y && l->tab[i].is_free)
+      if (l->tab[i].x == x && l->tab[i].y == y && l->tab[i].is_free)  //on cherche l'indice du point (x,y) qui est dans la liste
 	{
 	  l->tab[i].is_free = 0;
 	  l->tab[l->tab[i].prev].next = l->tab[i].next;
@@ -100,12 +100,12 @@ int tlist_remove (tlist_t * l, int x, int y)
 //question_9:
 int tlist_pop (tlist_t * l)
 {
-  if (l->size == 0)
+  if (l->size == 0)			//si la taille est de 0 alors il n'y a rien dan la liste donc on ne peut pas enlever: on retourne 0
     {
       return 0;
     };
-  l->tab[l->first].is_free = 0;
-  l->first = l->tab[l->first].next;
+  l->tab[l->first].is_free = 0;		//sinon on met le is_free du premier élément de la liste à 0 ce qui le supprime de la liste
+  l->first = l->tab[l->first].next;	// on modifie ensuite first
   l->size -= 1;
   return 1;
 }
