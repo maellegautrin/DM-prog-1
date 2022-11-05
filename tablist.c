@@ -202,7 +202,7 @@ int main (void)
     tlist_add(l,4,4);
     for(i = 0; i < 20; ++i)
     {
-      int lx=l->tab[i].is_free;
+      int lx=l->tab[i].x;
       printf ("%d",lx);
     }
   return 0;
