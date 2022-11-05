@@ -195,7 +195,7 @@ int tlist_sort (tlist_t * l)
 
 typedef int vecteur[2];
 
-int main (vecteur p[]) 
+int main (vecteur *p[]) 
 {
     int i;
     tlist_t* l = tlist_new();
