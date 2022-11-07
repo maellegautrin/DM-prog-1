@@ -202,7 +202,7 @@ int main(int argc, char *argv[])
     for (int i=0; i<argc-1; i++) 
 	    t[i]=atoi(argv[i+1]);
     tlist_t* l = tlist_new();
-    for(i=0; i<argc;i+=2)
+    for(i=0; i<argc-1;i+=2)
     { 
 	tlist_add(l,t[i],t[i+1]);
     }
