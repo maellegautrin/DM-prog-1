@@ -183,8 +183,8 @@ int dist (int i, tlist_t* l)
 		tlist_swap (l, i, j);
 	}
 	tlist_swap (l, pivot, j);
-	triRapid (debut, j - 1, l);
-	triRapid (j + 1, fin, l);
+	triRapid (debut, l->tab[j].next, l);
+	triRapid (l->tab[j].prev, fin, l);
  }
 
 int tlist_sort (tlist_t * l)
