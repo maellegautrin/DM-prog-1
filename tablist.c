@@ -198,8 +198,7 @@ int main(int argc, char *argv[])
 {
     int i;
     tlist_t* l = tlist_new();
-    int s=sizeof(p);
-    for(i=0; i<s;++i)
+    for(i=0; i<argc;++i)
     { 
 	tlist_add(l,p[i][0],p[i][1]);
     }
