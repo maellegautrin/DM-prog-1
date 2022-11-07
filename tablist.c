@@ -181,7 +181,6 @@ int dist (int i, tlist_t* l)
 	     { j = l->tab[j].prev;}
 	 if (i!=j)
 	      tlist_swap (l, i, j);
-	}
 	tlist_swap (l, pivot, j);
 	triRapid (debut, l->tab[j].next, l);
 	triRapid (l->tab[j].prev, fin, l);
