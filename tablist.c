@@ -160,7 +160,7 @@ int tlist_swap (tlist_t * l, int i, int j)
 
 //question_13:
 
-int dist (int i)
+int dist (int i, tlist_t* l)
   {
     int x = l->tab[i].x;
     int y = l->tab[i].y;
@@ -168,28 +168,28 @@ int dist (int i)
     return d;
   }
 
- int triRapid (int debut, int fin)
+ int triRapid (int debut, int fin, tlist_t* l)
   {
     int pivot = debut;
     int i = debut;
     int j = fin;
     while (i < j)
       {
-    	while (dist (i) <= dist (pivot) && i < fin)
+    	while (dist(i,l) <= dist(pivot,l) && i < fin)
 	      i = l->tab[i].next;
-    	while (dist (j) > dist (pivot))
+    	while (dist(j,l) > dist(pivot,l))
 	     { j = l->tab[i].prev;}
 	     if (i < j)
 		tlist_swap (l, i, j);
 	}
 	tlist_swap (l, pivot, j);
-	triRapid (debut, j - 1);
-	triRapid (j + 1, fin);
+	triRapid (debut, j - 1, l);
+	triRapid (j + 1, fin, l);
  }
 
 int tlist_sort (tlist_t * l)
 {
-    triRapid (l->first, l->last);
+    triRapid (l->first, l->last, l);
     return 0;
 }
 
