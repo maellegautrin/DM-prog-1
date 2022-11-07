@@ -183,7 +183,7 @@ int tri_part(tlist_t* l, int debut, int fin)
     int pivot=debut;
     int j;
 
-    for(j=l->tab[debut].next;plus_petit(i,j,l);j=l->tab[j].next)
+    for(j=l->tab[debut].next;plus_petit(j,fin,l);j=l->tab[j].next)
         {
         if(dist(j,l)<dist(pivot,l))
             {
