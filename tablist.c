@@ -215,6 +215,6 @@ int main(int argc, char *argv[])
     }
     int lx=l->tab[l->last].x;
     int ly=l->tab[l->last].y;
-    printf ("{%d,%d}},",lx,ly);
+    printf ("{%d,%d}}\n",lx,ly);
   return 0;
 }
