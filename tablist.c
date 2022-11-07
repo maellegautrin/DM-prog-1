@@ -181,7 +181,7 @@ int plus_petit(int i,int j,tlist_t* l){
     int pivot = debut;
     int i = debut;
     int j = fin;
-    _Bool b= true;
+    _Bool b= 1;
     while (b)
       {
     	while (dist(i,l) <= dist(pivot,l) && i!=fin){
