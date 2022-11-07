@@ -173,18 +173,19 @@ int dist (int i, tlist_t* l)
     int pivot = debut;
     int i = debut;
     int j = fin;
-    while (dist(i,l) < dist(j,l))
+    while (i!=j)
       {
-    	while (dist(i,l) <= dist(pivot,l) && dist(i,l) < dist(fin,l) && i!=l->last )
+    	while (dist(i,l) <= dist(pivot,l) && i!=fin )
 	      i = l->tab[i].next;
-    	while (dist(j,l) > dist(pivot,l) && i!=l->first )
-	     { j = l->tab[i].prev;}
-	     if (dist(i,l) < dist(j,l))
-		tlist_swap (l, i, j);
+    	while (dist(j,l) > dist(pivot,l))
+	     { j = l->tab[j].prev;}
+	 if (i!=j)
+	      tlist_swap (l, i, j);
 	}
 	tlist_swap (l, pivot, j);
 	triRapid (debut, l->tab[j].next, l);
 	triRapid (l->tab[j].prev, fin, l);
+   }
  }
 
 int tlist_sort (tlist_t * l)
