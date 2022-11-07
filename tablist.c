@@ -175,9 +175,9 @@ int dist (int i, tlist_t* l)
     int j = fin;
     while (dist(i,l) < dist(j,l))
       {
-    	while (dist(i,l) <= dist(pivot,l) && dist(i) < dist(fin)) && i!=l->last
+    	while (dist(i,l) <= dist(pivot,l) && dist(i) < dist(fin) && i!=l->last )
 	      i = l->tab[i].next;
-    	while (dist(j,l) > dist(pivot,l)) && i!=l->first
+    	while (dist(j,l) > dist(pivot,l) && i!=l->first )
 	     { j = l->tab[i].prev;}
 	     if (dist(i,l) < dist(j,l))
 		tlist_swap (l, i, j);
