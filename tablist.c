@@ -197,7 +197,7 @@ int tri_part(tlist_t* l, int debut, int fin)
 
 void tri_rapide(tlist_t* l,int debut,int fin)
     {
-    if(plus_petit(debut,fin,l)
+    if (plus_petit(debut,fin,l))
         {
         int pivot=tri_part(l,debut,fin);
         tri_rapide(l,debut,l->tab[pivot].prev);
