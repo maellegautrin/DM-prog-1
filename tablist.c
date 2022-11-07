@@ -170,20 +170,24 @@ int dist (int i, tlist_t* l)
 
 int plus_petit(int i,int j,tlist_t* l){
 	int c;
-	for(c=i,c!=j,i=l->ta[i].next)
-		
+	for(c=i,c!=l->last,i=l->ta[i].next){
+		if (c==j)
+			return 0;
+	}
+	return 1;
+}
  int triRapid (int debut, int fin, tlist_t* l)
   {
     int pivot = debut;
     int i = debut;
     int j = fin;
-    while (i!=j)
+    while (plus_petit(i,j,l))
       {
     	while (dist(i,l) <= dist(pivot,l) && i!=fin )
 	      i = l->tab[i].next;
     	while (dist(j,l) > dist(pivot,l))
 	     { j = l->tab[j].prev;}
-	 if (i!=j)
+	 if (plus_petit(i,j,l))
 	      tlist_swap (l, i, j);
 	tlist_swap (l, pivot, j);
 	triRapid (debut, l->tab[j].next, l);
