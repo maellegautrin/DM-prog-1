@@ -209,7 +209,7 @@ void tri_rapide(tlist_t* l,int debut,int fin)
 
 int tlist_sort (tlist_t * l)
 {
-    tri_rapide (l->first, l->last, l);
+    tri_rapide (l,l->first, l->last);
     return 0;
 }
 
