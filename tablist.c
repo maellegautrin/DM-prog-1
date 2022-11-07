@@ -181,13 +181,22 @@ int plus_petit(int i,int j,tlist_t* l){
     int pivot = debut;
     int i = debut;
     int j = fin;
-    while (i!=j)
+    _Bool b= true;
+    while (b)
       {
-    	while (dist(i,l) <= dist(pivot,l) && i!=fin && i!=j)
+    	while (dist(i,l) <= dist(pivot,l) && i!=fin){
 	      i = l->tab[i].next;
-    	while (dist(j,l) > dist(pivot,l) && i!=j)
-	     { j = l->tab[j].prev;}
-	 if (i!=j)
+	      if (b)
+		      b=(i!=j);
+	}
+    	while (dist(j,l) > dist(pivot,l))
+	     {
+		j = l->tab[j].prev;
+		if (b)
+			b=(i!=j);
+	     }
+	    	
+	 if (b)
 	      tlist_swap (l, i, j);
 	tlist_swap (l, pivot, j);
 	triRapid (debut, l->tab[j].next, l);
