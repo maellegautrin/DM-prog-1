@@ -199,7 +199,7 @@ int main(int argc, char *argv[])
     if (argc %2==0) {printf("erreur:nombre impair d'entiers");}
     int i;
     int *t = malloc((argc-1)*sizeof(int));
-    for (int i=0; i<argc; i++) 
+    for (int i=0; i<argc-1; i++) 
 	    t[i]=atoi(argv[i+1]);
     tlist_t* l = tlist_new();
     for(i=0; i<argc;i+=2)
