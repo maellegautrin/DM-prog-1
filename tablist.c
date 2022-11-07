@@ -196,7 +196,7 @@ int tlist_sort (tlist_t * l)
 
 int main(int argc, char *argv[])  
 {
-    if (argc %2==0) {printf("erreur:nombre impair d'entiers");}
+    if (argc %2==0) {printf("erreur:nombre impair d'entiers");return 1;}
     int i;
     int *t = malloc((argc-1)*sizeof(int));
     for (int i=0; i<argc-1; i++) 
@@ -204,8 +204,10 @@ int main(int argc, char *argv[])
     tlist_t* l = tlist_new();
     for(i=0; i<argc-1;i+=2)
     { 
-	tlist_add(l,t[i],t[i+1]);
+	int b= tlist_add(l,t[i],t[i+1]);
+	if (b==0) {printf("erreur: capacité dépassée");return 1}
     }
+    tlist_sort(t);
     printf ("{");
     for(i=l->first;i!=l->last;i=l->tab[i].next)
     {
