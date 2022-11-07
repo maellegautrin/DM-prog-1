@@ -168,6 +168,10 @@ int dist (int i, tlist_t* l)
     return d;
   }
 
+int plus_petit(int i,int j,tlist_t* l){
+	int c;
+	for(c=i,c!=j,i=l->ta[i].next)
+		
  int triRapid (int debut, int fin, tlist_t* l)
   {
     int pivot = debut;
