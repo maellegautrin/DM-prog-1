@@ -6,7 +6,7 @@ struct elem_t
 {
   int x;
   int y;
-  _Bool is_free; 	// on choirira comme l'énoncé le précise que is_free est vrai ssi le point est dans la liste
+  _Bool is_free; 	// on choisira comme l'énoncé le précise que is_free est vrai ssi le point est dans la liste
   int next;   	 	// next indiquera donc le point suivant dans la liste
   int prev;	 	// et prev le point précédent dans la liste
 };
@@ -29,7 +29,7 @@ struct tlist_t
 typedef struct tlist_t tlist_t;
 
 //question_4:
-tlist_t* tlist_new()       // contrairement à ce que l'énoncé demande, initialisera tous les éléments du tableau avec is_free=false ce qui signifie qu'on ne met aucun éléments dans la liste
+tlist_t* tlist_new()       // contrairement à ce que l'énoncé demande, on initialisera tous les éléments du tableau avec is_free=false ce qui signifie qu'on ne met aucun éléments dans la liste
 {
   tlist_t* t=malloc(sizeof(tlist_t));  	
   for (int i = 0; i < MAX_CAP; ++i)    
@@ -160,16 +160,15 @@ int tlist_swap (tlist_t * l, int i, int j)
 
 //question_13:
 
-int tlist_sort (tlist_t * l)
-{
-  int dist (int i)
+int dist (int i)
   {
     int x = l->tab[i].x;
     int y = l->tab[i].y;
     int d = x * x + y * y;
     return d;
-  };
-  int triRapid (int debut, int fin)
+  }
+
+ int triRapid (int debut, int fin)
   {
     int pivot = debut;
     int i = debut;
@@ -182,11 +181,14 @@ int tlist_sort (tlist_t * l)
 	     { j = l->tab[i].prev;}
 	     if (i < j)
 		tlist_swap (l, i, j);
-	  };
+	}
 	tlist_swap (l, pivot, j);
 	triRapid (debut, j - 1);
 	triRapid (j + 1, fin);
- };
+ }
+
+int tlist_sort (tlist_t * l)
+{
     triRapid (l->first, l->last);
     return 0;
 }
