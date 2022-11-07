@@ -209,7 +209,7 @@ int main(int argc, char *argv[])
 	int b= tlist_add(l,t[i],t[i+1]);
 	if (b==0) {printf("erreur: capacité dépassée");return 1}
     }
-    tlist_sort(t);
+    tlist_sort(l);
     printf ("{");
     for(i=l->first;i!=l->last;i=l->tab[i].next)
     {
