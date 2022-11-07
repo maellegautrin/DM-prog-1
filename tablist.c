@@ -191,16 +191,20 @@ int tlist_sort (tlist_t * l)
     return 0;
 }
 
-//attoy
+//atoi
 // ./test arg1 -> "./test" "arg1" "
 
 int main(int argc, char *argv[])  
 {
+    if (argc %2==0) {printf("erreur:nombre impair d'entiers");}
     int i;
+    int *t = malloc((argc-1)*sizeof(int));
+    for (int i=0; i<argc; i++) 
+	    t[i]=atoi(argv[i+1]);
     tlist_t* l = tlist_new();
-    for(i=0; i<argc;++i)
+    for(i=0; i<argc;i+=2)
     { 
-	tlist_add(l,p[i][0],p[i][1]);
+	tlist_add(l,t[i],t[i+1]);
     }
     printf ("{");
     for(i=l->first;i!=l->last;i=l->tab[i].next)
