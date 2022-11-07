@@ -170,7 +170,7 @@ int dist (int i, tlist_t* l)
 
 int plus_petit(int i,int j,tlist_t* l){
 	int c;
-	for(c=i;c!=l->last;i=l->ta[i].next){
+	for(c=i;c!=l->last;i=l->tab[i].next){
 		if (c==j)
 			return 0;
 	}
