@@ -43,10 +43,8 @@ tlist_t* tlist_new()       // contrairement à ce que l'énoncé demande, initia
 //question_5:
 int tlist_free (tlist_t * l)
 {
-  int s = l->size;			//on sauvegarde la taille initiale
-  l->first = 0;				//on met tout à 0 ce qui donne aucun éléments dans la liste
-  l->last = 0;
-  l->size = 0;
+  int s=l->size;
+  free(l);
   return s;
 }
 
@@ -193,9 +191,10 @@ int tlist_sort (tlist_t * l)
     return 0;
 }
 
-typedef int vecteur[2];
+//attoy
+// ./test arg1 -> "./test" "arg1" "
 
-int main (vecteur *p[]) 
+int main(int argc, char *argv[])  
 {
     int i;
     tlist_t* l = tlist_new();
