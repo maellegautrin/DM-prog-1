@@ -170,34 +170,43 @@ int dist (int i, tlist_t* l)
 
 int plus_petit(int i,int j,tlist_t* l){
 	int c;
-	for(c=i;c!=l->last;i=l->tab[i].next){
+	for(c=i;c!=l->last;c=l->tab[c].next){
 		if (c==j)
-			return 0;
+			return 1;
 	}
-	return 1;
+  if (l->last==j)
+  {
+    return 1;
+  }
+	return 0;
 }
 
 int tri_part(tlist_t* l, int debut, int fin)
     {
-    int i=debut;
+    int c=debut;
     int pivot=debut;
-    int j;
+    int i;
 
-    for(j=l->tab[debut].next;plus_petit(j,fin,l);j=l->tab[j].next)
+    for(i=l->tab[debut].next;!plus_petit(fin,i,l);i=l->tab[i].next)
         {
-        if(dist(j,l)<dist(pivot,l))
+        if(dist(i,l)<dist(pivot,l))
             {
-            i=l->tab[i].next;
-            tlist_swap(l,i,j);
+            c=l->tab[c].next;
+            tlist_swap(l,c,i);
             }
         }
-    tlist_swap(l,i,debut);
-    return(i);
+        if(dist(fin,l)<dist(pivot,l))
+            {
+            c=l->tab[c].next;
+            tlist_swap(l,c,fin);
+            }
+    tlist_swap(l,c,debut);
+    return(c);
     }
 
 void tri_rapide(tlist_t* l,int debut,int fin)
     {
-    if (plus_petit(debut,fin,l))
+    if (!plus_petit(fin,debut,l))
         {
         int pivot=tri_part(l,debut,fin);
         tri_rapide(l,debut,l->tab[pivot].prev);
