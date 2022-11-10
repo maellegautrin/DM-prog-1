@@ -56,12 +56,12 @@ void hlist_free(hlist_t* l)
 int hlist_search(hlist_t *l, int v, hnode_t* path[])
 {
 	hnode_t* compteur=l->head;			//on initialise un compteur au premier élément du premier étage
-	for(int i=0; i<l->height;i++)			// on monte jusqu'à atteindre le + l'infini du dernier étage
+	for(int i=0; i<l->height-1;i++)			// on monte jusqu'à atteindre le + l'infini du dernier étage
 	{
 		compteur=compteur->dessus;
 	}
 	int c=0;
-	while (c<l->height)				//on parcourt jusqu'à arriver au dernier étage
+	while (c<l->height)				//on parcourt jusqu'à arriver au premier étage
 	{
 		if ((compteur->valeur)==v && !path[c]->moins_infini && !path[c]->plus_infini )                // si on trouve la valeur, on finit de remplir path avec les pointeurs vers notre valeur et on renvoi 1
 		{
