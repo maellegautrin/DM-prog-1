@@ -2,7 +2,7 @@
 //question_1:
 struct hnode_t 			// on définit un noeud tel que ce noeud en a un autre à gauche, un autre à droite, un autre en dessous, et un autre au dessus.
 {
-	hnode_t* next;   
+	hnode_t* next;
 	hnode_t* prev;
 	hnode_t* dessus;
 	hnode_t* dessous;
@@ -56,16 +56,16 @@ int hlist_search(hlist_t *l, int v, hnode_t* path[])
 		{
 			for(c; c<l->height;c++)
 				path[c]=valeur;
-				compteur=compteur.dessous;
+				compteur=compteur->dessous;
 			return 1;
 		}
 		if (compteur->valeur<v)			// si on trouve une valeur plus petite que v, on se décale à droite
-			compteur=compteur.next;
+			compteur=compteur->next;
 		else					// sinon, on descend et on ajoute le pointeur du dernier élément plus petit à path.
 		{
-			path[c]=compteur.prev;
+			path[c]=compteur->prev;
 			c++;
-			compteur=compteur.prev.dessous;
+			compteur=compteur->prev->dessous;
 		}
 	}
 	return 0;
@@ -73,49 +73,38 @@ int hlist_search(hlist_t *l, int v, hnode_t* path[])
 
 //question_6:
 
-int hlist_add(hlist_remove(hlist_t *l, int v)
+int hlist_add(hlist_t *l, int v)
 {
 	hnode_t* path[]=malloc(sizeof(l->height));
 	if (hlist_search(l,v,path))
 		return 0;
+
 	srand(time(NULL));
 	int b= 1;
-	int c=1;						//c compte le nombre d'étage auquel on se trouve
-	hnode_t* haut_infini=path[0];				//haut_infini mémorise l'adresse du -infini de l'étage le plus haut
+	int c=1;
 	while (b)
 	{
-		hnode_t* newnode=malloc(sizeof(hnode_t));	//on crée un nouveau noeud pour l'insertion
-		newnode->valeur=v;				//on affecte la valeur
-		newnode->prev=path[l->height-c];		//on rajoute comme précedent et comme suivant puis on met à jour le suivant et le prcédent du nouveau
+		hnode_t* newnode=malloc(sizeof(hnode_t));
+		newnode->valeur=v;
+		newnode->prev=path[l->height-c];
 		newnode->next=path[l->height-c].next;
 		path[l->height-c]->next=newnode;
-		newnode->next.prev=newnode;
-		newnode->plus_infini=0;				//on marque le fait qu'on ne veut pas coder -infini ou +infini
-		newnode->moins_infini=0;
-		if (c==l->height)				//si on arrive à l'étage le plus haut, il faut recréer un étage
+		newnode->next->prev=newnode;
+		b= rand() % 2;
+		if (c!=0)
 		{
-			hnode_t* node_moins_infini=malloc(hnode_t);		//on créer un noeud +infini et un -infini
-			hnode_t* node_plus_infini=malloc(hnode_t);
-			node_moins_infini->next=node_plus_infini;
-			node_plus_infini->prev=node_moins_infini;
-			node_moins_infini->moins_infini=1;			//on met à jour leurs valeurs en mettant les booléens à vrai
-			node_moins_infini->plus_infini=0;
-			node_plus_infini->plus_infini=1;
-			node_plus_infini->mois_infini=0;
-			haut_infini->dessus=node_moins_infini;			//on "relie" cet étage aux autres
-			haut_infini->next->dessus=node_plus_infini;
-			node_plus_infini->dessous=haut_infini->next;
-			node_moins_infini->dessous=haut_infini;
-			(l->height)++;						//on augmente la hauteur de 1
-			haut_infini=node_moins_infini;				//on met à jour le nouveau haut_infini
+			newnode->dessous=path[c-1];
+			newnode->dessous->dessus=newnode;
 		}
-		b= rand() % 2;							//on refait le tirage pour savoir si on va recopier la valeur à l'étage du dessus
 		c++;
+		if (c==l->height)
+		{
+		hnode_t* node_plus=malloc(sizeof(hnode_t));
+		
+		}
 	}
 }
 
-
-//question_7:
 
 
 
