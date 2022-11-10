@@ -4,7 +4,8 @@
 
 //question_1:
 
-typedef struct hnode_t hnode_t		// on définit un noeud tel que ce noeud en a un autre à gauche, un autre à droite, un autre en dessous, et un autre au dessus.
+typedef struct hnode_t hnode_t;		// on définit un noeud tel que ce noeud en a un autre à gauche, un autre à droite, un autre en dessous, et un autre au dessus.
+struct hnode_t
 {
 	hnode_t* next;   
 	hnode_t* prev;
