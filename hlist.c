@@ -102,14 +102,14 @@ int hlist_add(hlist_t *l, int v)
 		newnode->moins_infini=0;
 		if (c==l->height)				//si on arrive à l'étage le plus haut, il faut recréer un étage
 		{
-			hnode_t* node_moins_infini=malloc(hnode_t);		//on créer un noeud +infini et un -infini
-			hnode_t* node_plus_infini=malloc(hnode_t);
+			hnode_t* node_moins_infini=malloc(sizeof(hnode_t));		//on créer un noeud +infini et un -infini
+			hnode_t* node_plus_infini=malloc(sizeof(hnode_t));
 			node_moins_infini->next=node_plus_infini;
 			node_plus_infini->prev=node_moins_infini;
 			node_moins_infini->moins_infini=1;			//on met à jour leurs valeurs en mettant les booléens à vrai
 			node_moins_infini->plus_infini=0;
 			node_plus_infini->plus_infini=1;
-			node_plus_infini->mois_infini=0;
+			node_plus_infini->moins_infini=0;
 			haut_infini->dessus=node_moins_infini;			//on "relie" cet étage aux autres
 			haut_infini->next->dessus=node_plus_infini;
 			node_plus_infini->dessous=haut_infini->next;
@@ -129,7 +129,7 @@ int hlist_add(hlist_t *l, int v)
 int hlist_remove(hlist_t *l, int v)
 {
 	hnode_t* path[]=malloc(sizeof(l->height));
-	if (hlist_search(l,v,path[]))
+	if (hlist_search(l,v,path))
 	{
 		int c=l->height-1;
 		while (path[c]->valeur==v)
