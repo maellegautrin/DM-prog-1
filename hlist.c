@@ -67,7 +67,7 @@ int hlist_search(hlist_t *l, int v, hnode_t* path[])
 		{
 			for(; c<l->height;c++)
 			{
-				path[c]=v;
+				path[c]=compteur;
 				compteur=compteur->dessous;
 			}
 			return 1;
@@ -188,41 +188,5 @@ int main(int argi, char* argv[])
 	      
 	      
 	      
-	      
-	      
-	      
-		
-		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	
 
