@@ -11,7 +11,6 @@ struct hnode_t
 	hnode_t* prev;
 	hnode_t* dessus;
 	hnode_t* dessous;
-	int valeur;
 	int plus_infini;	//on note si la valeur est +infini, dans ce cas la valeur du noeud est à ignorer, et le noeud à droite aussi.
 	int moins_infini;	// analogue
 };
