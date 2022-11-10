@@ -112,12 +112,47 @@ int hlist_add(hlist_remove(hlist_t *l, int v)
 		b= rand() % 2;							//on refait le tirage pour savoir si on va recopier la valeur à l'étage du dessus
 		c++;
 	}
+	return 1;
 }
 
 
 //question_7:
-
-
+	    
+int hlist_remove(hlist_t *l, int v)
+{
+	hnode_t* path[]=malloc(sizeof(l->height));
+	if hlist_search(l,v,path[])
+	{
+		int c=l->height-1;
+		while (path[c].valeur==v)
+		{
+			path[c]->next->prev=path[c]->prev;
+			path[c]->prev->next=path[c]->next;
+			free(path[c]);
+			c--;
+		}
+		
+		return 1;
+	}
+	return 0;
+}
+	     
+//question_8:
+	      
+int main(int argi, char* argv)
+{
+	
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+	      
+		
+		
 
 
 
