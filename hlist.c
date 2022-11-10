@@ -37,9 +37,9 @@ hlist_t* hlist_new()
 	hnode_t* fin=malloc(sizeof(hnode_t));
 	t->head=hd;
 	t->head->next=fin;
-	t->head->next->prev=head;
-	t->head->moins_infini=1;			//on marque les valeur + et - l'infini dans la liste
-	t->fin->plus_infini=1;
+	fin->prev=hd;
+	hd->moins_infini=1;			//on marque les valeur + et - l'infini dans la liste
+	fin->plus_infini=1;
 	t->height=1;				// on initialise la taille à 1
 	return t;
 }
