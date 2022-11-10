@@ -1,5 +1,9 @@
+#include <stddef.h>
+#include <stdlib.h>
+#include <stdlio.h>
 
 //question_1:
+
 typedef struct hnode_t hnode_t		// on définit un noeud tel que ce noeud en a un autre à gauche, un autre à droite, un autre en dessous, et un autre au dessus.
 {
 	hnode_t* next;   
@@ -11,7 +15,6 @@ typedef struct hnode_t hnode_t		// on définit un noeud tel que ce noeud en a un
 	int moins_infini;	// analogue
 };
 
-typedef struct hnode_t hnode_t;
 
 //question_2:
 
@@ -28,8 +31,8 @@ typedef struct hlist_t hlist_t;
 hlist_t* hlist_new()
 {
 	hlist_t* t=malloc(sizeof(hlist_t));     //on alloue de la mémoire
-	t->head.moins_infini=1;			//on marque les valeur + et - l'infini dans la liste
-	t->head.next.plus_infini=1;
+	t->head->moins_infini=1;			//on marque les valeur + et - l'infini dans la liste
+	t->head->next->plus_infini=1;
 	t->height=1;				// on initialise la taille à 1
 	return t;
 }
@@ -90,7 +93,7 @@ int hlist_add(hlist_t *l, int v)
 		hnode_t* newnode=malloc(sizeof(hnode_t));	//on crée un nouveau noeud pour l'insertion
 		newnode->valeur=v;				//on affecte la valeur
 		newnode->prev=path[l->height-c];		//on rajoute comme précedent et comme suivant puis on met à jour le suivant et le prcédent du nouveau
-		newnode->next=path[l->height-c].next;
+		newnode->next=path[l->height-c]->next;
 		path[l->height-c]->next=newnode;
 		newnode->next.prev=newnode;
 		newnode->plus_infini=0;				//on marque le fait qu'on ne veut pas coder -infini ou +infini
@@ -124,7 +127,7 @@ int hlist_add(hlist_t *l, int v)
 int hlist_remove(hlist_t *l, int v)
 {
 	hnode_t* path[]=malloc(sizeof(l->height));
-	if hlist_search(l,v,path[])
+	if (hlist_search(l,v,path[]))
 	{
 		int c=l->height-1;
 		while (path[c].valeur==v)
@@ -156,15 +159,18 @@ int hlist_remove(hlist_t *l, int v)
 	      
 int main(int argi, char* argv)
 {
-	hlist_t*= hlist_new();
+	hlist_t* l= hlist_new();
 	for(int i=1;i<argi;i++)
 		hlist_add(l,atoi(argv[i]));
-	hnode* c=l->head;
-	for(i=0;i<argi+1;i++)
+	hnode_t* c=l->head;
+	printf("-∞  ");
+	for(int i=1;i<argi;i++)
 	{
-		printf("%d  ",c->valeur);
+		int val=c->valeur;
+		printf("%d  ",c->val);
 	 	c=c->next;
 	}
+	printf("+∞");
 	hlist_free(l);
 	return 0;
 }
