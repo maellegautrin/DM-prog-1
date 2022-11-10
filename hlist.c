@@ -1,6 +1,6 @@
 #include <stddef.h>
 #include <stdlib.h>
-#include <stdlio.h>
+#include <stdio.h>
 
 //question_1:
 
