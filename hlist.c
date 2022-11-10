@@ -83,7 +83,7 @@ int hlist_search(hlist_t *l, int v, hnode_t* path[])
 
 int hlist_add(hlist_t *l, int v)
 {
-	hnode_t **path=l->malloc(hight*sizeof(hnode_t *));
+	hnode_t **path=malloc(l->height*sizeof(hnode_t *));
 	if (hlist_search(l,v,path))
 		return 0;
 	srand(time(NULL));
@@ -128,7 +128,7 @@ int hlist_add(hlist_t *l, int v)
 	    
 int hlist_remove(hlist_t *l, int v)
 {
-	hnode_t* path[]=malloc(sizeof(l->height));
+	hnode_t **path=malloc(l->height*sizeof(hnode_t *));
 	if (hlist_search(l,v,path))
 	{
 		int c=l->height-1;
