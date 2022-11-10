@@ -31,6 +31,7 @@ hlist_t* hlist_new()
 	t->head.moins_infini=1;			//on marque les valeur + et - l'infini dans la liste
 	t->head.next.plus_infini=1;
 	t->height=1;				// on initialise la taille à 1
+	return t;
 }
 
 //qestion_4:
@@ -126,10 +127,22 @@ int hlist_remove(hlist_t *l, int v)
 		int c=l->height-1;
 		while (path[c].valeur==v)
 		{
-			path[c]->next->prev=path[c]->prev;
-			path[c]->prev->next=path[c]->next;
-			free(path[c]);
+			if (c==l->height-1 && path[c]->prev->moins_infini && path[c]->next->plus_infini)
+			{
+				hlist_free(path[c]->prev);
+				hlist_free(path[c]->next);
+				hlist_free(path[c]);
+				l->height--;
+				
+			}
+			else
+			{
+				path[c]->next->prev=path[c]->prev;
+				path[c]->prev->next=path[c]->next;
+				free(path[c]);
+			}	
 			c--;
+			
 		}
 		
 		return 1;
@@ -141,6 +154,18 @@ int hlist_remove(hlist_t *l, int v)
 	      
 int main(int argi, char* argv)
 {
+	hlist_t*= hlist_new();
+	for(int i=1;i<argi;i++)
+		hlist_add(l,atoi(argv[i]));
+	hnode* c=l->head;
+	for(i=0;i<argi+1;i++)
+	{
+		printf("%d  ",c->valeur);
+	 	c=c->next;
+	}
+	hlist_free(l);
+	return 0;
+}
 	
 	      
 	      
