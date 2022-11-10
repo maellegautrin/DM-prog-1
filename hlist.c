@@ -1,6 +1,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 
 //question_1:
 
@@ -72,7 +73,7 @@ int hlist_search(hlist_t *l, int v, hnode_t* path[])
 		{
 			path[c]=compteur->prev;
 			c++;
-			compteur=compteur->prev.dessous;
+			compteur=compteur->prev->dessous;
 		}
 	}
 	return 0;
@@ -82,7 +83,7 @@ int hlist_search(hlist_t *l, int v, hnode_t* path[])
 
 int hlist_add(hlist_t *l, int v)
 {
-	hnode_t* path[]=malloc(sizeof(l->height));
+	hnode_t **path=l->malloc(hight*sizeof(hnode_t *));
 	if (hlist_search(l,v,path))
 		return 0;
 	srand(time(NULL));
@@ -96,7 +97,7 @@ int hlist_add(hlist_t *l, int v)
 		newnode->prev=path[l->height-c];		//on rajoute comme précedent et comme suivant puis on met à jour le suivant et le prcédent du nouveau
 		newnode->next=path[l->height-c]->next;
 		path[l->height-c]->next=newnode;
-		newnode->next.prev=newnode;
+		newnode->next->prev=newnode;
 		newnode->plus_infini=0;				//on marque le fait qu'on ne veut pas coder -infini ou +infini
 		newnode->moins_infini=0;
 		if (c==l->height)				//si on arrive à l'étage le plus haut, il faut recréer un étage
@@ -131,7 +132,7 @@ int hlist_remove(hlist_t *l, int v)
 	if (hlist_search(l,v,path[]))
 	{
 		int c=l->height-1;
-		while (path[c].valeur==v)
+		while (path[c]->valeur==v)
 		{
 			if (c==l->height-1 && path[c]->prev->moins_infini && path[c]->next->plus_infini)
 			{
