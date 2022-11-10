@@ -136,9 +136,9 @@ int hlist_remove(hlist_t *l, int v)
 		{
 			if (c==l->height-1 && path[c]->prev->moins_infini && path[c]->next->plus_infini)
 			{
-				hlist_free(path[c]->prev);
-				hlist_free(path[c]->next);
-				hlist_free(path[c]);
+				free(path[c]->prev);
+				free(path[c]->next);
+				free(path[c]);
 				l->height--;
 				
 			}
@@ -159,7 +159,7 @@ int hlist_remove(hlist_t *l, int v)
 	     
 //question_8:
 	      
-int main(int argi, char* argv)
+int main(int argi, char* argv[])
 {
 	hlist_t* l= hlist_new();
 	for(int i=1;i<argi;i++)
@@ -169,7 +169,7 @@ int main(int argi, char* argv)
 	for(int i=1;i<argi;i++)
 	{
 		int val=c->valeur;
-		printf("%d  ",c->val);
+		printf("%d  ",val);
 	 	c=c->next;
 	}
 	printf("+∞");
