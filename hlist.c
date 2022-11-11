@@ -102,7 +102,7 @@ int hlist_search(hlist_t *l, int v, hnode_t* path[])
 }
 
 //question_6:
-
+#define min(a,b) (a<=b?a:b)
 int hlist_add(hlist_t *l, int v)
 {
 	hnode_t **path=malloc((l->height+1)*sizeof(hnode_t *));
@@ -147,7 +147,7 @@ int hlist_add(hlist_t *l, int v)
 				node_plus_infini->dessous=dessous_haut;
 				node_moins_infini->dessous=haut_infini;
 				(l->height)++;						//on augmente la hauteur de 1
-				path[0]=node_moins_infini
+				path[0]=node_moins_infini;
 				haut_infini=node_moins_infini;				//on met à jour le nouveau haut_infini
 			}
 			b= rand() % 2;							//on refait le tirage pour savoir si on va recopier la valeur à l'étage du dessus
