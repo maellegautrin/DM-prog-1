@@ -147,8 +147,9 @@ int hlist_add(hlist_t *l, int v)
 			}
 			b= rand() % 2;							//on refait le tirage pour savoir si on va recopier la valeur à l'étage du dessus
 		c++;
+		}
+		return 1;
 	}
-	return 1;
 } 
 
 
