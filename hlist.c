@@ -202,7 +202,7 @@ int main(int argi, char* argv[])
 	 	c=c->next;
 	}
 	printf("+∞");
-	hlist_free(l);
+\\	hlist_free(l);
 	return 0;
 }
 	
