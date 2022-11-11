@@ -131,8 +131,8 @@ int tlist_push (tlist_t * l, int x, int y)
     {
       if (l->tab[i].is_free == 0) 		//si on trouve une place qui est_vide on ajute notre élément à cet indice
 	{
-	  i->x=x;
-	  i->y=y;
+	  tab[i].x=x;
+	  tab[i]->y=y;
 	  l->tab[i].is_free = 1;		//on modifie pour que i soit l'indice de tête de liste
 	  l->tab[l->first].prev = i;
 	  l->tab[i].next = l->first;
