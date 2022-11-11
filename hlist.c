@@ -48,6 +48,23 @@ hlist_t* hlist_new()
 
 void hlist_free(hlist_t* l)
 {
+	hnode_t* c1=l->head;
+	hnode_t* c2=l->head;
+	int i;
+	for(i=0;i<=l->height;i++)
+	{
+		while(!c2->plus_infini)
+		{
+			c2=c2->next;
+			free(c2->prev);
+		}
+		free(c2);
+		c1=c1->dessus;
+		c2=c1;
+		free(c1->dessous);
+	}
+	free(c1);
+	free(c2);
 	free(l);
 }
 
