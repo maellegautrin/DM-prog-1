@@ -51,7 +51,7 @@ void hlist_free(hlist_t* l)
 	hnode_t* c1=l->head;
 	hnode_t* c2=l->head;
 	int i;
-	for(i=0;i<=l->height;i++) 			// on parcourt la liste ligne par ligne, c1 retient la positiondu 1er élément d'un étage pendant que c2 prcourt l'étage en supprimant les éléments derniere lui
+	for(i=0;i<l->height;i++) 			// on parcourt la liste ligne par ligne, c1 retient la positiondu 1er élément d'un étage pendant que c2 prcourt l'étage en supprimant les éléments derniere lui
 	{
 		while(!c2->plus_infini)
 		{
@@ -207,7 +207,7 @@ int main(int argi, char* argv[])
 		printf("%d  ",val);
 	 	c=c->next;
 	}
-	printf("+∞");
+	printf("+∞"\n);
 	hlist_free(l);
 	return 0;
 }
