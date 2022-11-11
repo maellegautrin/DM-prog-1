@@ -118,8 +118,8 @@ int hlist_add(hlist_t *l, int v)
 		{
 			hnode_t* newnode=malloc(sizeof(hnode_t));	//on crée un nouveau noeud pour l'insertion
 			newnode->valeur=v;				//on affecte la valeur
-			newnode->prev=path[l->height-c];		//on rajoute comme précedent et comme suivant puis on met à jour le suivant et le prcédent du nouveau
-			newnode->next=path[l->height-c]->next;
+			newnode->prev=path[max(l->height-c,0)];		//on rajoute comme précedent et comme suivant puis on met à jour le suivant et le prcédent du nouveau
+			newnode->next=path[max(0,l->height-c)]->next;
 			path[l->height-c]->next=newnode;
 			if (c!=0)					// si on est pas à l'étage le plus bas on relie au noeud du dessous
 			{
@@ -147,7 +147,7 @@ int hlist_add(hlist_t *l, int v)
 				node_plus_infini->dessous=dessous_haut;
 				node_moins_infini->dessous=haut_infini;
 				(l->height)++;						//on augmente la hauteur de 1
-				hlist_search(l,v,path)
+				path[0]=node_moins_infini
 				haut_infini=node_moins_infini;				//on met à jour le nouveau haut_infini
 			}
 			b= rand() % 2;							//on refait le tirage pour savoir si on va recopier la valeur à l'étage du dessus
