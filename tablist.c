@@ -43,7 +43,7 @@ tlist_t* tlist_new()       // contrairement à ce que l'énoncé demande, on ini
 //question_5:
 int tlist_free (tlist_t * l)
 {
-  int s=l->size;
+  int s=l->size;			//on retient la taille de départ
   free(l);
   return s;
 }
@@ -63,7 +63,7 @@ int tlist_add (tlist_t * l, int x, int y)
     }
   for (int i = 0; i < MAX_CAP; i++) 	//on cherche le premier indice de l' élément qui n'est pas dans la liste (ie is_free est faux)
     {
-      if (l->tab[i].is_free == 0)	//on ajoute le point (x,y) à cet indice la
+      if (l->tab[i].is_free == 0)	//on ajoute le point (x,y) à cet indice là
 	{
 	  l->tab[i].x=x;
 	  l->tab[i].y=y;
@@ -98,7 +98,7 @@ int tlist_remove (tlist_t * l, int x, int y)
 //question_9:
 int tlist_pop (tlist_t * l)
 {
-  if (l->size == 0)			//si la taille est de 0 alors il n'y a rien dan la liste donc on ne peut pas enlever: on retourne 0
+  if (l->size == 0)			//si la taille est de 0 alors il n'y a rien dans la liste donc on ne peut pas enlever: on retourne 0
     {
       return 0;
     };
@@ -123,15 +123,17 @@ int tlist_top (tlist_t * l, int *x, int *y)
 //question_11:
 int tlist_push (tlist_t * l, int x, int y)
 {
-  if (l->size == MAX_CAP)
+  if (l->size == MAX_CAP) 		//si le tableau est complet, on ne peut pas rajouter de point
     {
       return 0;
     }
-  for (int i = 0; i < MAX_CAP; i++)
+  for (int i = 0; i < MAX_CAP; i++)		//on parcourt le tableau
     {
-      if (l->tab[i].is_free == 0)
+      if (l->tab[i].is_free == 0) 		//si on trouve une place qui est_vide on ajute notre élément à cet indice
 	{
-	  l->tab[i].is_free = 1;
+	  i->x=x;
+	  i->y=y;
+	  l->tab[i].is_free = 1;		//on modifie pour que i soit l'indice de tête de liste
 	  l->tab[l->first].prev = i;
 	  l->tab[i].next = l->first;
 	  l->first = i;
