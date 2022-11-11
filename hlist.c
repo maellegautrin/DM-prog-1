@@ -63,7 +63,7 @@ int hlist_search(hlist_t *l, int v, hnode_t* path[])
 	int c=0;					// compte le nombre détage parcouru
 	while (c<l->height)				//on parcourt jusqu'à arriver au premier étage
 	{
-		if ((compteur->valeur)==v && compteur->moins_infini && compteur->plus_infini )                // si on trouve la valeur, on finit de remplir path avec les pointeurs vers notre valeur et on renvoi 1
+		if ((compteur->valeur)==v && !compteur->moins_infini && !compteur->plus_infini )                // si on trouve la valeur, on finit de remplir path avec les pointeurs vers notre valeur et on renvoi 1
 		{
 			for(; c<l->height;c++)
 			{
@@ -115,9 +115,13 @@ int hlist_add(hlist_t *l, int v)
 			node_moins_infini->plus_infini=0;
 			node_plus_infini->plus_infini=1;
 			node_plus_infini->moins_infini=0;
+			dessous_haut=haut_infini;
+			while(!dessous_haut->plus_infini)			//on cherche le noeud +infini de l'avant dernier étage
+				dessous_haut=dessous_haut->next;
+				
 			haut_infini->dessus=node_moins_infini;			//on "relie" cet étage aux autres
 			haut_infini->next->dessus=node_plus_infini;
-			node_plus_infini->dessous=haut_infini->next;
+			node_plus_infini->dessous=dessous_haut;
 			node_moins_infini->dessous=haut_infini;
 			(l->height)++;						//on augmente la hauteur de 1
 			haut_infini=node_moins_infini;				//on met à jour le nouveau haut_infini
