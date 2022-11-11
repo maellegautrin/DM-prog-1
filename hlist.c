@@ -197,7 +197,7 @@ int hlist_remove(hlist_t *l, int v)
 int main(int argi, char* argv[])
 {
 	hlist_t* l= hlist_new();
-	for(int i=1;i<argi;i++)
+	for(int i=1;i<argi-1;i++)
 		hlist_add(l,atoi(argv[i]));
 	hnode_t* c=l->head->next;
 	printf("-∞  ");
