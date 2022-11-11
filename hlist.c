@@ -120,7 +120,6 @@ int hlist_add(hlist_t *l, int v)
 			newnode->valeur=v;				//on affecte la valeur
 			newnode->prev=path[max(l->height-c,0)];		//on rajoute comme précedent et comme suivant puis on met à jour le suivant et le prcédent du nouveau
 			newnode->next=path[max(0,l->height-c)]->next;
-			path[l->height-c]->next=newnode;
 			if (c!=1)					// si on est pas à l'étage le plus bas on relie au noeud du dessous
 			{
 				newnode->dessous=path[l->height-c+1]->next;
