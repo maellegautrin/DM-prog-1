@@ -131,8 +131,8 @@ int tlist_push (tlist_t * l, int x, int y)
     {
       if (l->tab[i].is_free == 0) 		//si on trouve une place qui est_vide on ajute notre élément à cet indice
 	{
-	  tab[i].x=x;
-	  tab[i]->y=y;
+	  l->tab[i].x=x;
+	  l->tab[i]->y=y;
 	  l->tab[i].is_free = 1;		//on modifie pour que i soit l'indice de tête de liste
 	  l->tab[l->first].prev = i;
 	  l->tab[i].next = l->first;
@@ -147,22 +147,22 @@ int tlist_push (tlist_t * l, int x, int y)
 //question_12:
 int tlist_swap (tlist_t * l, int i, int j)
 {
-  if (l->tab[i].is_free && l->tab[j].is_free)
+  if (l->tab[i].is_free && l->tab[j].is_free)		
     {
-      int ex = l->tab[i].x;
+      int ex = l->tab[i].x;		//on sauvegarde le point dans i
       int ey = l->tab[i].y;
-      l->tab[i].x = l->tab[j].x;
+      l->tab[i].x = l->tab[j].x; 	//on échange
       l->tab[i].y = l->tab[j].y;
       l->tab[j].x = ex;
       l->tab[j].y = ey;
       return 1;
     }
-  return 0;
+  return 0; 			//si les éléments d'indices i et j ne sont pas dans le tableau, on renvoit 0 
 }
 
 //question_13:
 
-int dist (int i, tlist_t* l)
+int dist (int i, tlist_t* l)	 // fonction qui renvoi la distance au carré
   {
     int x = l->tab[i].x;
     int y = l->tab[i].y;
@@ -170,20 +170,20 @@ int dist (int i, tlist_t* l)
     return d;
   }
 
-int plus_petit(int i,int j,tlist_t* l){
+int plus_petit(int i,int j,tlist_t* l){ 		//renvoi si i est placé avant j dans la liste
 	int c;
 	for(c=i;c!=l->last;c=l->tab[c].next){
 		if (c==j)
 			return 1;
 	}
-  if (l->last==j)
-  {
-    return 1;
-  }
+  	if (l->last==j)
+	{
+	    return 1;
+ 	}
 	return 0;
 }
 
-int tri_part(tlist_t* l, int debut, int fin)
+int tri_part(tlist_t* l, int debut, int fin) 	// fonction auxiliaire du tri rapide 
     {
     int c=debut;
     int pivot=debut;
@@ -191,19 +191,19 @@ int tri_part(tlist_t* l, int debut, int fin)
 
     for(i=l->tab[debut].next;!plus_petit(fin,i,l);i=l->tab[i].next)
         {
-        if(dist(i,l)<dist(pivot,l))
+        if(dist(i,l)<dist(pivot,l))  		//on compare la distance du pivot et de i
             {
-            c=l->tab[c].next;
-            tlist_swap(l,c,i);
+            c=l->tab[c].next;			//on décale c à droite
+            tlist_swap(l,c,i);			//on échange c et i
             }
         }
-        if(dist(fin,l)<dist(pivot,l))
+        if(dist(fin,l)<dist(pivot,l))		// de même avec fin 
             {
             c=l->tab[c].next;
             tlist_swap(l,c,fin);
             }
     tlist_swap(l,c,debut);
-    return(c);
+    return(c);			//on retourne le nouvel indice du pivot
     }
 
 void tri_rapide(tlist_t* l,int debut,int fin)
@@ -211,44 +211,42 @@ void tri_rapide(tlist_t* l,int debut,int fin)
     if (!plus_petit(fin,debut,l))
         {
         int pivot=tri_part(l,debut,fin);
-        tri_rapide(l,debut,l->tab[pivot].prev);
-        tri_rapide(l,l->tab[pivot].next,fin);
+        tri_rapide(l,debut,l->tab[pivot].prev);		//on trie le tableau de gauche
+        tri_rapide(l,l->tab[pivot].next,fin);		//et celui de droite
         }
     }
 
 
 
-int tlist_sort (tlist_t * l)
+int tlist_sort (tlist_t * l) //on appelle le tri rapide
 {
     tri_rapide (l,l->first, l->last);
     return 0;
 }
 
-//atoi
-// ./test arg1 -> "./test" "arg1" "
 
 int main(int argc, char *argv[])  
 {
-    if (argc %2==0) {
+    if (argc %2==0) {					//si on a un nombre impair d'entiers, on ne peut pas avoir des points
 	    printf("erreur:nombre impair d'entiers");
 	    return 1;
     }
     int i;
-    int *t = malloc((argc-1)*sizeof(int));
+    int *t = malloc((argc-1)*sizeof(int)); 		//on fait un tableau d'entiers en convertissant les chaines de caractères donnée en entrée
     for (int i=0; i<argc-1; i++) 
 	    t[i]=atoi(argv[i+1]);
-    tlist_t* l = tlist_new();
+    tlist_t* l = tlist_new();				//on crée un tableau tist_t
     for(i=0; i<argc-1;i+=2)
     { 
-	int b= tlist_add(l,t[i],t[i+1]);
+	int b= tlist_add(l,t[i],t[i+1]);		//on aoute un à un les éléments en vérifiant qu'il n'y a pas eu d'erreurs dans l'ajout
 	if (b==0) {
 		printf("erreur: capacité dépassée");
 		return 1;
 	}
     }
-    tlist_sort(l);
+    tlist_sort(l);					//on trie la liste
     printf ("{");
-    for(i=l->first;i!=l->last;i=l->tab[i].next)
+    for(i=l->first;i!=l->last;i=l->tab[i].next)         //on affiche la liste de points
     {
        int lx=l->tab[i].x;
        int ly=l->tab[i].y;
@@ -257,6 +255,6 @@ int main(int argc, char *argv[])
     int lx=l->tab[l->last].x;
     int ly=l->tab[l->last].y;
     printf ("{%d,%d}}\n",lx,ly);
-    tlist_free(l);
+    tlist_free(l);					//on libère la mémoire
     return 0;
 }
