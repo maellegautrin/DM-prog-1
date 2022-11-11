@@ -121,7 +121,7 @@ int hlist_add(hlist_t *l, int v)
 			newnode->prev=path[max(l->height-c,0)];		//on rajoute comme précedent et comme suivant puis on met à jour le suivant et le prcédent du nouveau
 			newnode->next=path[max(0,l->height-c)]->next;
 			path[l->height-c]->next=newnode;
-			if (c!=0)					// si on est pas à l'étage le plus bas on relie au noeud du dessous
+			if (c!=1)					// si on est pas à l'étage le plus bas on relie au noeud du dessous
 			{
 				newnode->dessous=path[l->height-c+1]->next;
 				path[l->height-c+1]->next->dessus=newnode;
@@ -147,7 +147,8 @@ int hlist_add(hlist_t *l, int v)
 				node_plus_infini->dessous=dessous_haut;
 				node_moins_infini->dessous=haut_infini;
 				(l->height)++;						//on augmente la hauteur de 1
-				path[1]=path[0]->next;
+				
+				path[1]=path[0];
 				path[0]=node_moins_infini;
 				haut_infini=node_moins_infini;				//on met à jour le nouveau haut_infini
 			}
