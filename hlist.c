@@ -60,12 +60,12 @@ int hlist_search(hlist_t *l, int v, hnode_t* path[])
 	{
 		compteur=compteur->dessus;
 	}
-	int c=0;
+	int c=0;					// compte le nombre détage parcouru
 	while (c<l->height)				//on parcourt jusqu'à arriver au premier étage
 	{
-		if ((compteur->valeur)==v && !path[c]->moins_infini && !path[c]->plus_infini )                // si on trouve la valeur, on finit de remplir path avec les pointeurs vers notre valeur et on renvoi 1
+		if ((compteur->valeur)==c && !path[c]->moins_infini && !path[c]->plus_infini )                // si on trouve la valeur, on finit de remplir path avec les pointeurs vers notre valeur et on renvoi 1
 		{
-			for(c; c<l->height;c++)
+			for(; c<l->height;c++)
 			{
 				path[c]=compteur;
 				compteur=compteur->dessous;
