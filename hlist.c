@@ -102,7 +102,7 @@ int hlist_search(hlist_t *l, int v, hnode_t* path[])
 }
 
 //question_6:
-#define min(a,b) (a<=b?a:b)
+#define man(a,b) (a>=b?a:b)
 int hlist_add(hlist_t *l, int v)
 {
 	hnode_t **path=malloc((l->height+1)*sizeof(hnode_t *));
