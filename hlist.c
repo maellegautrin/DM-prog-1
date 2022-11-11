@@ -147,6 +147,7 @@ int hlist_add(hlist_t *l, int v)
 				node_plus_infini->dessous=dessous_haut;
 				node_moins_infini->dessous=haut_infini;
 				(l->height)++;						//on augmente la hauteur de 1
+				path[1]=path[0].next;
 				path[0]=node_moins_infini;
 				haut_infini=node_moins_infini;				//on met à jour le nouveau haut_infini
 			}
