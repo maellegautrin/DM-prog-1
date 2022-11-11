@@ -202,7 +202,8 @@ int main(int argi, char* argv[])
 		hlist_add(l,atoi(argv[i]));
 	hnode_t* c=l->head->next;
 	printf("-∞  ");
-	for(int i=1; i<argi; i++)
+	while(!c->plus_infini)
+	//for(int i=1; i<argi; i++)
 	{
 		int val=c->valeur;
 		printf("%d  ",val);
