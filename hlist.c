@@ -118,8 +118,8 @@ int hlist_add(hlist_t *l, int v)
 		{
 			hnode_t* newnode=malloc(sizeof(hnode_t));	//on crée un nouveau noeud pour l'insertion
 			newnode->valeur=v;				//on affecte la valeur
-			newnode->prev=path[max(l->height-c,0)];		//on rajoute comme précedent et comme suivant puis on met à jour le suivant et le prcédent du nouveau
-			newnode->next=path[max(0,l->height-c)]->next;
+			newnode->prev=path[l->height-c];		//on rajoute comme précedent et comme suivant puis on met à jour le suivant et le prcédent du nouveau
+			newnode->next=path[l->height-c]->next;
 			if (c!=1)					// si on est pas à l'étage le plus bas on relie au noeud du dessous
 			{
 				newnode->dessous=path[l->height-c+1]->next;
