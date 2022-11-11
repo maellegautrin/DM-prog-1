@@ -72,7 +72,7 @@ int hlist_search(hlist_t *l, int v, hnode_t* path[])
 			}
 			return 1;
 		}
-		if (compteur->valeur<v)			// si on trouve une valeur plus petite que v, on se décale à droite
+		if (compteur->moins_infini  || compteur->valeur<v)			// si on trouve une valeur plus petite que v, on se décale à droite
 			compteur=compteur->next;
 		else					// sinon, on descend et on ajoute le pointeur du dernier élément plus petit à path.
 		{
