@@ -115,7 +115,7 @@ int hlist_add(hlist_t *l, int v)
 			node_moins_infini->plus_infini=0;
 			node_plus_infini->plus_infini=1;
 			node_plus_infini->moins_infini=0;
-			dessous_haut=haut_infini;
+			hnode_t* dessous_haut=haut_infini;
 			while(!dessous_haut->plus_infini)			//on cherche le noeud +infini de l'avant dernier étage
 				dessous_haut=dessous_haut->next;
 				
