@@ -121,6 +121,7 @@ int hlist_add(hlist_t *l, int v)
 			newnode->prev=path[l->height-c];		//on rajoute comme précedent et comme suivant puis on met à jour le suivant et le prcédent du nouveau
 			newnode->next=path[l->height-c]->next;
 			path[l->height-c]->next=newnode;
+			newnode->dessous=path[l->height-c+1]->next;
 			newnode->next->prev=newnode;
 			newnode->plus_infini=0;				//on marque le fait qu'on ne veut pas coder -infini ou +infini
 			newnode->moins_infini=0;
